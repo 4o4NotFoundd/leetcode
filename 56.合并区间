@@ -1,0 +1,20 @@
+class Solution(object):
+    def merge(self, intervals):
+        """
+        :type intervals: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        #将列表中的元素按照绝对值大小进行升序排序list1 = [3,5,-4,-1,0,-2,-6]
+        #sorted(list1, key=lambda x: abs(x))
+        n=len(intervals)
+        matr=[]
+        i=0
+        #intervals.sort(key=lambda x: x.start)#以list的start元素开始排序,在原始list上
+        newList=sorted(intervals,key=lambda x:x[0])
+        print(matr) 
+        for i in range(n):#注意数组越界list index out of index，for i in range(n-1) 出现i+1就报错
+            if not matr or matr[-1][-1]<newList[i][0]:
+                matr.append(newList[i])
+            else:
+                matr[-1][-1]=max(matr[-1][-1],newList[i][1])
+        return matr
