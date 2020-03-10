@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 栈类
+    // function Stack() {
+    //     // 栈中的属性
+    //     var items = []
+    //
+    //     // 栈相关的方法
+    //     // 压栈操作
+    //     this.push = function (element) {
+    //         items.push(element)
+    //     }
+    //
+    //     // 出栈操作
+    //     this.pop = function () {
+    //         return items.pop()
+    //     }
+    //
+    //     // peek操作
+    //     this.peek = function () {
+    //         return items[items.length - 1]
+    //     }
+    //
+    //     // 判断栈中的元素是否为空
+    //     this.isEmpty = function () {
+    //         return items.length == 0
+    //     }
+    //
+    //     // 获取栈中元素的个数
+    //     this.size = function () {
+    //         return items.length
+    //     }
+    // }
+    //栈类
+    // function stack() {
+    //     this.item=[];
+    //     //1. 入栈
+    //     stack.prototype.push =function(element){
+    //         this.item.push(element)
+    //     }
+    //     //2. 出栈,取出最后一个元素
+    //     stack.prototype.pop = function(){
+    //         this.item.pop()
+    //     }
+    //     //3. 查看栈顶元素peek
+    //         this.item.peek = function(){
+    //             return this.item[item.length-1]
+    //         }
+    //     //4. toString,判断栈是否为空isEmpty
+    //     //5. 进制转换10-》2
+    //     function toBirary(num){
+    //         var res=[];
+    //
+    //         while (num>0){
+    //             res.push(num%2);
+    //             num = Math.floor(num/2);
+    //         }
+    //         var birary='';
+    //         while(!res.isEmpty){
+    //             birary+=res.pop();
+    //         }
+    //         return birary;
+    //     }
+    //     alert(toBirary(11))
+    //
+    //     item.push(1);
+    //     item.push(2)
+    //     item.pop();
+    //     alert(item)
+    //
+    //
+    // }
+
+//     封装十进制转二进制的函数
+    function dec2bin(decNumer) {
+        // 定义变量
+        var stack = new Stack()
+        var remainder;
+
+        // 循环除法
+        while (decNumer > 0) {
+            remainder = decNumer % 2
+            decNumer = Math.floor(decNumer / 2)
+            stack.push(remainder)
+        }
+
+        // 将数据取出
+        var binayriStrng = ""
+        while (!stack.isEmpty()) {
+            binayriStrng += stack.pop()
+        }
+        return binayriStrng
+    }
+
+    // 测试函数
+    alert(dec2bin(10))
+    // alert(dec2bin(233))
+    // alert(dec2bin(1000))
+</script>
+</body>
+</html>

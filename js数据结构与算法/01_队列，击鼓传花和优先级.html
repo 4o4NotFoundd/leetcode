@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1111111111111、 自定义队列
+    // function Queue() {
+    //     var item=[];
+    //
+    //     // 队列操作的方法,先进先出
+    //     // 1、增
+    //     // Queue.prototype.enqueue = function(element){
+    //     //     item.push(element)
+    //     // }
+    //     //使用原型或者第二种
+    //     this.enqueue = function (element) {
+    //         return item.push(element)
+    //     }
+    //
+    //     // 2、删,删除第一个元素
+    //     this.dequeue = function () {
+    //         return item.shift()
+    //     }
+    //     //3、 查看前端的元素
+    //     this.front = function () {
+    //         return item[0]
+    //     }
+    //     //4.  查看队列是否为空
+    //     this.isEmpty = function () {
+    //         return item.length== 0 ? true:false
+    //     }
+    //     //5 查看队列中元素的个数size,toString
+    //     this.size = function () {
+    //         return item.length
+    //     }
+    //
+    // }
+    //222222222222、击鼓传花游戏
+    // function passGame(nameList,num) {
+    //     var queue2 = new Queue();
+    //     for (var i=0;i<nameList.length;i++){
+    //         queue2.enqueue(nameList[i])
+    //     }
+    //     while (queue2.size()>1){
+    //         for (var i=0;i<num;i++){
+    //             queue2.enqueue(queue2.dequeue())
+    //         }
+    //         queue2.dequeue();
+    //     }
+    //
+    //     var endName1 = queue2.front()
+    //     alert(endName1)
+    //     return endName1
+    // }
+    // var namelist0= ['a','b','c','d'];
+    // var res = passGame(namelist0,5);
+    // alert('最后的人是：' + res);
+
+    //3333333333333、优先级队列
+    function priorityQueue(){
+        //属性+方法
+        var item=[];
+        function priorityElement(element, priority) {
+            this.element =element;
+            this.priority = priority;
+        }
+        this.enqueue = function(element, priority) {
+            var pQueue=new priorityElement(element, priority)
+
+            if (item.length==0){
+                item.push(pQueue)
+            }else {
+                //判断优先级
+                var addEle=false
+                for(var i=0;i<item.length;i++){
+                    // 数值小，优先级高
+                    if(item[i].priority > pQueue.priority){
+                        item.splice(i,0,pQueue)
+                        addEle=true
+                        break
+                    }
+                }
+                if (!addEle){
+                    item.push(pQueue)
+                }
+            }
+        }
+        // 查看元素是否为空
+        this.isEmpty = function () {
+            return items.length == 0
+        }
+        // 获取元素的个数
+        this.size = function () {
+            return item.length
+        // this.dequeue()
+        }
+        this.front= function(){
+            return item[0]
+        }
+        this.toString= function () {
+            var resString=''
+            for (var i=0;i<item.length;i++){
+                resString += item[i].element+':'+item[i].priority
+            }
+            return resString
+        }
+    }
+
+    var pq1 = new priorityQueue();
+    pq1.enqueue('disange',2);
+    pq1.enqueue('diyige',0);
+    pq1.enqueue('dierge',1);
+    var res1=pq1.toString();
+    // 队列字符串展示
+    alert(res1);
+</script>
+</body>
+</html>
